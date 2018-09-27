@@ -1,0 +1,1 @@
+//stage boxes to select for fight

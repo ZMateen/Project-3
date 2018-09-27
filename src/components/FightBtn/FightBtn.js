@@ -1,0 +1,1 @@
+//start fight button on select page and on fight page
