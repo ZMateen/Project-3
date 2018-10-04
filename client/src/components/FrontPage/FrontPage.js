@@ -19,7 +19,7 @@ class FrontPage extends Component {
         <Headerlogo></Headerlogo>
         <Info />
       </Container>
-     </div
+     </div>
     );
   }
 }
