@@ -11,6 +11,27 @@ class Signup extends React.Component {
     password: ""
   };
 
+handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.name && this.state.email && this.state.username && this.state.password) {
+      API.handleSubmit({
+        name: this.state.name,
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      })
+        .then(res => this.handleSubmit())
+        .catch(err => console.log(err));
+    }
+  };
+
     render() {
       return (
         <div id="parent">
