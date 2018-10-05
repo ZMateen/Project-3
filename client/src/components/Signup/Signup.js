@@ -3,6 +3,14 @@ import './Signup.css';
 
 
 class Signup extends React.Component {
+
+  state = {
+    name: [],
+    email: "",
+    username: "",
+    password: ""
+  };
+
     render() {
       return (
         <div id="parent">
