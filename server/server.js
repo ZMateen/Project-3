@@ -3,24 +3,19 @@ var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
-var app = express();
-var port = process.env.PORT || 8080;
-
-var passport = require("passport");
+var passport = require("./config/passport");
 var flash = require("connect-flash");
 
-require("./config/passport")(passport);
+var PORT = process.env.PORT || 3001;
+var db = require("./models");
 
-app.use(morgan("dev"));
-app.use(cookieParser());
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
+var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set("view engine", "ejs");
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use(
   session({
@@ -31,9 +26,17 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
-require("./app/routes.js")(app, passport);
 
-app.listen(port);
-console.log("The magic happens on port " + port);
+require("./routes/html-routes.js")(app);  //do we need this, think react takes care of this?
+require("./routes/api-routes.js")(app);
+
+
+db.sequelize.sync().then(function(){
+  app.listen(PORT);
+  console.log("The magic happens on port " + PORT);
+});
+
+
+
+
