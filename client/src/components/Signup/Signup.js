@@ -21,7 +21,8 @@ class Signup extends React.Component {
                 type="text"
                 name="name"
                 className="register-input"
-                placeholder="Type Your Name..."/>
+                placeholder="Type Your Name..."
+                onChange={this.handleInputChange}/>
   
             </div>
   
@@ -33,7 +34,8 @@ class Signup extends React.Component {
               type="text"
               name="email"
               className="email-input"
-              placeholder="Email..."/>
+              placeholder="Email..."
+              onChange={this.handleInputChange}/>
             
             </div>
   
@@ -45,7 +47,8 @@ class Signup extends React.Component {
               type="text"
               name="username"
               className="login-input"
-              placeholder="Username..."/>
+              placeholder="Username..."
+              onChange={this.handleInputChange}/>
             
             </div>
   
@@ -57,7 +60,8 @@ class Signup extends React.Component {
               type="password"
               name="password"
               className="pass-input"
-              placeholder="Password..."/>
+              placeholder="Password..."
+              onChange={this.handleInputChange}/>
       
             </div>
 {/*
