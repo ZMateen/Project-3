@@ -16,7 +16,7 @@ const App = () =>
                 <Route exact path="/" component={FrontPage}/>
                 <Route exact path="/SelectPage" component={SelectPage}/>
                 <Route exact path="/FightPage" component={FightPage}/>
-                <Route exact path="/Signup" components={Signup}/>
+                <Route exact path="/Signup" component={Signup}/>
 
             </Switch>
             </div>
