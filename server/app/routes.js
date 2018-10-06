@@ -57,3 +57,32 @@ function isLoggedIn(req, res, next) {
 
 	res.redirect('/');
 }
+
+//Route to the API
+(function() {
+    //update page without reloading, req/rec data from server after page has loaded/ send data to server
+    var callToAPI = new XMLHttpRequest();
+    //get info from api and make it visible to the user
+    callToAPI.open("GET", "https://opentdb.com/api.php?amount=10", true);
+    //defines a funciton to be called when the readyState property changes
+    //readyState holds the status of the XMLHttpRequest-request not initialized, server connection established, 
+    //request recieved, processing request, request finished and response is ready
+    callToAPI.onreadystatechange = function() {
+        //if it is state is ready, the request is done, and everything is ok, then
+        if (callToAPI.readyState == XMLHttpRequest.DONE && callToAPI.status == 200) {
+            //put the parsed json object in text in categories
+            var questions = JSON.parse(callToAPI.responseText).trivia_questions;
+            //do a for loop of the categories
+            for (var i = 0; i < questions.length; i++) {
+                //create a new element "option" and put it in a variable
+                var newOption = document.createElement("option");
+                //the value prop sets or returns the value of the value attribute of a text field
+                newOption.value = questions[i].id;
+                //sets or returns the HTML content of an element
+                newOption.innerHTML = questions[i].name;
+                }
+        }
+    }
+    //sends the request to the server (used for GET and POST)
+    callToAPI.send(null);
+})();
