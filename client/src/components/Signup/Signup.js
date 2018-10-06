@@ -1,6 +1,7 @@
 import React from "react";
 import './Signup.css';
 
+import API from "../../utils/API";
 
 class Signup extends React.Component {
 
