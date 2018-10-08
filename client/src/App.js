@@ -1,26 +1,19 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Nav from "./components/Nav";
 
-import FrontPage from "./components/FrontPage";
-import SelectPage from "./components/SelectPage";
-import FightPage from "./components/FightPage";
-import Signup from "./components/Signup";
-
-import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-
-const App = () => 
-    <Router>
-        <div>
-            <Navbar />
-            <Switch>
-                <Route exact path="/" component={FrontPage}/>
-                <Route exact path="/SelectPage" component={SelectPage}/>
-                <Route exact path="/FightPage" component={FightPage}/>
-                <Route exact path="/Signup" component={Signup}/>
-
-            </Switch>
-            </div>
-    </Router>
-;
+const App = () => (
+  <Router>
+    <div>
+      <Nav />
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 export default App;
