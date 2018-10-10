@@ -1,1 +1,0 @@
-//during fught displays the questions and retrieves answer and checks if it is correct 
